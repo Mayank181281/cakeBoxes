@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useProducts } from '../hooks/useProducts';
+import { useFirestoreProducts } from '../hooks/useFirestoreProducts';
 import { categories } from '../data/products';
 import { ArrowLeft, Filter, Grid, List } from 'lucide-react';
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
-  const { getProductsByCategory } = useProducts();
+  const { getProductsByCategory } = useFirestoreProducts();
 
   const category = categories.find(cat => cat.id === categoryId);
   const products = getProductsByCategory(categoryId || '');
@@ -84,7 +84,7 @@ const CategoryPage = () => {
             >
               <div className="aspect-w-1 aspect-h-1">
                 <img
-                  src={product.images[0]}
+                  src={product.imageUrl}
                   alt={product.name}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />

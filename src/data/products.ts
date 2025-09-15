@@ -1,15 +1,12 @@
 export interface Product {
-  id: string;
+  id?: string;
   name: string;
-  price: string;
+  price: number;
+  size: string;
   category: string;
-  images: string[];
   description: string;
-  features: string[];
-  specifications: Record<string, string>;
-  rating: number;
-  reviews: number;
-  featured: boolean;
+  imageUrl: string;
+  createdAt?: any; // Firestore Timestamp
 }
 
 export interface Category {
@@ -22,46 +19,67 @@ export interface Category {
 
 export const categories: Category[] = [
   {
-    id: 'paper-products',
-    name: 'Paper Products',
-    description: 'Sustainable paper-based packaging solutions for all your food service needs',
+    id: 'sweet-boxes',
+    name: 'Sweet Boxes',
+    description: 'Premium packaging solutions for sweets, candies, and confectionery items',
     icon: 'Package',
     image: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    id: 'reusable-plastics',
-    name: 'Reusable Plastics',
-    description: 'Durable plastic containers perfect for multiple uses',
-    icon: 'Recycle',
+    id: 'dry-fruit-boxes',
+    name: 'Dry Fruit Boxes',
+    description: 'Elegant packaging for dry fruits, nuts, and healthy snacks',
+    icon: 'Package',
     image: 'https://images.pexels.com/photos/3735780/pexels-photo-3735780.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    id: 'kitchen-utilities',
-    name: 'Kitchen Utilities',
-    description: 'Essential kitchen tools and utensils for food service',
-    icon: 'Utensils',
+    id: 'cake-boxes',
+    name: 'Cake Boxes',
+    description: 'Sturdy and attractive boxes designed specifically for cakes of all sizes',
+    icon: 'Package',
     image: 'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    id: 'eco-friendly',
-    name: 'Eco-Friendly',
-    description: 'Completely biodegradable and compostable packaging options',
-    icon: 'Leaf',
+    id: 'cake-base',
+    name: 'Cake Base',
+    description: 'Durable cake bases and boards for professional cake presentation',
+    icon: 'Circle',
     image: 'https://images.pexels.com/photos/4226924/pexels-photo-4226924.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    id: 'carry-bags',
-    name: 'Carry Bags',
-    description: 'Strong and reliable bags for takeout and delivery',
-    icon: 'ShoppingBag',
+    id: 'pastry-boxes',
+    name: 'Pastry Boxes',
+    description: 'Compact and elegant boxes perfect for pastries and small baked goods',
+    icon: 'Package',
     image: 'https://images.pexels.com/photos/5029857/pexels-photo-5029857.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    id: 'bakery-supplies',
-    name: 'Bakery Supplies',
-    description: 'Specialized packaging for bakeries and pastry shops',
-    icon: 'ChefHat',
+    id: 'cupcake-boxes',
+    name: 'Cup Cake Boxes',
+    description: 'Specialized boxes with inserts for secure cupcake transportation',
+    icon: 'Package',
     image: 'https://images.pexels.com/photos/4226796/pexels-photo-4226796.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    id: 'pizza-boxes',
+    name: 'Pizza Boxes',
+    description: 'Durable corrugated boxes designed for hot pizza delivery and takeout',
+    icon: 'Package',
+    image: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    id: 'brownie-boxes',
+    name: 'Brownie Boxes',
+    description: 'Perfect sized boxes for brownies and small square baked items',
+    icon: 'Package',
+    image: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    id: 'snacks-other-boxes',
+    name: 'Snacks and Other Boxes',
+    description: 'Versatile packaging solutions for various snacks and food items',
+    icon: 'Package',
+    image: 'https://images.pexels.com/photos/3735780/pexels-photo-3735780.jpeg?auto=compress&cs=tinysrgb&w=400'
   }
 ];
 
@@ -70,7 +88,7 @@ export const defaultProducts: Product[] = [
     id: 'clamshell-box-large',
     name: 'Large Clamshell Box',
     price: '$24.99',
-    category: 'paper-products',
+    category: 'cake-boxes',
     images: [
       'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=800',
       'https://images.pexels.com/photos/4226796/pexels-photo-4226796.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -101,7 +119,7 @@ export const defaultProducts: Product[] = [
     id: 'bagasse-bowl-set',
     name: 'Bagasse Bowl Set',
     price: '$18.50',
-    category: 'eco-friendly',
+    category: 'snacks-other-boxes',
     images: [
       'https://images.pexels.com/photos/4226924/pexels-photo-4226924.jpeg?auto=compress&cs=tinysrgb&w=800',
       'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=800'
@@ -131,7 +149,7 @@ export const defaultProducts: Product[] = [
     id: 'compostable-plates',
     name: 'Compostable Plates',
     price: '$15.99',
-    category: 'kitchen-utilities',
+    category: 'cake-base',
     images: [
       'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
@@ -160,7 +178,7 @@ export const defaultProducts: Product[] = [
     id: 'kraft-paper-bags',
     name: 'Kraft Paper Bags',
     price: '$12.75',
-    category: 'carry-bags',
+    category: 'sweet-boxes',
     images: [
       'https://images.pexels.com/photos/5029857/pexels-photo-5029857.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
@@ -189,7 +207,7 @@ export const defaultProducts: Product[] = [
     id: 'cake-boxes-10inch',
     name: '10" Cake Boxes',
     price: '$28.99',
-    category: 'bakery-supplies',
+    category: 'cake-boxes',
     images: [
       'https://images.pexels.com/photos/4226796/pexels-photo-4226796.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
@@ -218,7 +236,7 @@ export const defaultProducts: Product[] = [
     id: 'bamboo-plates',
     name: 'Bamboo Fiber Plates',
     price: '$18.25',
-    category: 'eco-friendly',
+    category: 'pastry-boxes',
     images: [
       'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],

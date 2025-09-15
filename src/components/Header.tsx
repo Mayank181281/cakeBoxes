@@ -22,17 +22,7 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Search Bar - Hidden on mobile */}
-          <div className="hidden md:flex flex-1 max-w-md mx-8">
-            <div className="relative w-full">
-              <input
-                type="text"
-                placeholder="Search products..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              />
-              <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
-            </div>
-          </div>
+          
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
@@ -41,7 +31,7 @@ const Header = () => {
             </Link>
             <div className="relative group">
               <button className="text-gray-700 hover:text-green-600 transition-colors">
-                Products
+                Categories
               </button>
               <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <div className="py-2">
@@ -57,7 +47,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
+            {/* <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
               About Us
             </Link>
             <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
@@ -65,12 +55,24 @@ const Header = () => {
             </Link>
             <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
               Distributor
-            </Link>
+            </Link> */}
           </nav>
+
+          {/* Search Bar - Hidden on mobile */}
+          <div className="hidden md:flex flex-1 max-w-md mx-8">
+            <div className="relative w-full">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              />
+              <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
+            </div>
+          </div>
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <button className="hidden md:block p-2 text-gray-600 hover:text-green-600 transition-colors">
+            {/* <button className="hidden md:block p-2 text-gray-600 hover:text-green-600 transition-colors">
               <Search className="h-5 w-5" />
             </button>
             <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
@@ -79,7 +81,7 @@ const Header = () => {
             <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
               <User className="h-5 w-5" />
             </button>
-            
+             */}
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}

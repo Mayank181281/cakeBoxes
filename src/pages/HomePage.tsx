@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useProducts } from '../hooks/useProducts';
+import { useFirestoreProducts } from '../hooks/useFirestoreProducts';
 import { categories } from '../data/products';
 import { 
   ArrowRight, 
@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 const HomePage = () => {
-  const { getFeaturedProducts, loading } = useProducts();
+  const { getFeaturedProducts, loading } = useFirestoreProducts();
   const featuredProducts = getFeaturedProducts();
 
   const getIconComponent = (iconName: string) => {
@@ -173,7 +173,7 @@ const HomePage = () => {
               >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
-                    src={product.images[0]}
+                    src={product.imageUrl}
                     alt={product.name}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
