@@ -75,7 +75,7 @@ const ProductPage = () => {
 
             {/* Quantity and Add to Cart */}
             <div className="space-y-4">
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Quantity
                 </label>
@@ -94,11 +94,11 @@ const ProductPage = () => {
                     <Plus className="h-4 w-4" />
                   </button>
                 </div>
-              </div>
+              </div> */}
 
               <button className="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2">
                 <ShoppingBag className="h-5 w-5" />
-                <span>Add to Cart</span>
+                <span>WhatsApp Now</span>
               </button>
             </div>
 
