@@ -84,7 +84,7 @@ const HomePage = () => {
     <div>
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-green-50 to-green-100 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/data/hero_banner.jpg')] bg-cover bg-center opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/hero_banner.jpg')] bg-cover bg-center opacity-50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">

@@ -1,13 +1,18 @@
 export interface Product {
   id?: string;
   name: string;
-  price: number;
+  price: string; // Changed to string to support formatted prices like '$24.99'
   size: string;
   category: string;
   description: string;
   imageUrl: string; // Main image (for backward compatibility)
   mainImageUrl?: string; // Explicit main image
   otherImageUrls?: string[]; // Additional images
+  features?: string[]; // Product features list
+  specifications?: Record<string, string>; // Product specifications
+  rating?: number; // Product rating
+  reviews?: number; // Number of reviews
+  featured?: boolean; // Whether product is featured
   createdAt?: any; // Firestore Timestamp
 }
 
@@ -25,63 +30,63 @@ export const categories: Category[] = [
     name: 'Sweet Boxes',
     description: 'Premium packaging solutions for sweets, candies, and confectionery items',
     icon: 'Package',
-    image: '/data/p1.jpg'
+    image: '/p1.jpg'
   },
   {
     id: 'dry-fruit-boxes',
     name: 'Dry Fruit Boxes',
     description: 'Elegant packaging for dry fruits, nuts, and healthy snacks',
     icon: 'Package',
-    image: '/data/p2.jpg'
+    image: '/p2.jpg'
   },
   {
     id: 'cake-boxes',
     name: 'Cake Boxes',
     description: 'Sturdy and attractive boxes designed specifically for cakes of all sizes',
     icon: 'Package',
-    image: '/data/p3.jpg'
+    image: '/p3.jpg'
   },
   {
     id: 'cake-base',
     name: 'Cake Base',
     description: 'Durable cake bases and boards for professional cake presentation',
     icon: 'Circle',
-    image: '/data/p4.jpg'
+    image: '/p4.jpg'
   },
   {
     id: 'pastry-boxes',
     name: 'Pastry Boxes',
     description: 'Compact and elegant boxes perfect for pastries and small baked goods',
     icon: 'Package',
-    image: '/data/p5.jpg'
+    image: '/p5.jpg'
   },
   {
     id: 'cupcake-boxes',
     name: 'Cup Cake Boxes',
     description: 'Specialized boxes with inserts for secure cupcake transportation',
     icon: 'Package',
-    image: '/data/p6.jpg'
+    image: '/p6.jpg'
   },
   {
     id: 'pizza-boxes',
     name: 'Pizza Boxes',
     description: 'Durable corrugated boxes designed for hot pizza delivery and takeout',
     icon: 'Package',
-    image: '/data/p7.jpg'
+    image: '/p7.jpg'
   },
   {
     id: 'brownie-boxes',
     name: 'Brownie Boxes',
     description: 'Perfect sized boxes for brownies and small square baked items',
     icon: 'Package',
-    image: '/data/p8.jpg'
+    image: '/p8.jpg'
   },
   {
     id: 'snacks-other-boxes',
     name: 'Snacks and Other Boxes',
     description: 'Versatile packaging solutions for various snacks and food items',
     icon: 'Package',
-    image: '/data/p9.jpg'
+    image: '/p9.jpg'
   }
 ];
 
@@ -90,9 +95,11 @@ export const defaultProducts: Product[] = [
     id: 'clamshell-box-large',
     name: 'Large Clamshell Box',
     price: '$24.99',
+    size: '9" x 9" x 3"',
     category: 'cake-boxes',
-    images: [
-      'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=800',
+    imageUrl: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=800',
+    mainImageUrl: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=800',
+    otherImageUrls: [
       'https://images.pexels.com/photos/4226796/pexels-photo-4226796.jpeg?auto=compress&cs=tinysrgb&w=800',
       'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800'
     ],
