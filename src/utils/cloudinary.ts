@@ -36,3 +36,8 @@ export const uploadImageToCloudinary = async (file: File): Promise<string> => {
     throw new Error('Failed to upload image');
   }
 };
+
+export const uploadMultipleImagesToCloudinary = async (files: File[]): Promise<string[]> => {
+  const uploadPromises = files.map(file => uploadImageToCloudinary(file));
+  return Promise.all(uploadPromises);
+};

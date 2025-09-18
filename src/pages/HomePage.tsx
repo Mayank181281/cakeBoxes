@@ -58,24 +58,24 @@ const HomePage = () => {
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      role: 'Head Chef, Green Bistro',
-      image: 'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=200',
-      quote: 'EcoPackage has transformed our takeout service. The quality is exceptional and our customers love the eco-friendly approach.',
+      name: 'Rajesh Kumar',
+      role: 'Owner, Sweet Corner Mithai Shop',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      quote: 'One stop solution for my business! Best quality boxes for sweets and dry fruits. Very happy with their service.',
       rating: 5
     },
     {
-      name: 'Michael Chen',
-      role: 'Owner, Urban Bakery',
-      image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=200',
-      quote: 'Fast delivery and competitive prices. Their packaging keeps our pastries fresh and looks professional.',
+      name: 'Priya Sharma',
+      role: 'Baker, Sharma Bakery',
+      image: 'https://images.pexels.com/photos/8363787/pexels-photo-8363787.jpeg',
+      quote: 'Perfect packaging items for my cake business. Good quality and reasonable prices. Highly recommended!',
       rating: 5
     },
     {
-      name: 'Lisa Rodriguez',
-      role: 'Restaurant Manager, Fresh & Fast',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
-      quote: 'Outstanding customer service and sustainable packaging options. Highly recommend for any food business.',
+      name: 'Amar Deep',
+      role: 'Restaurant Owner, Punjabi Food Corner',
+      image: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg',
+      quote: 'Very reliable for food packaging. Fast delivery and good customer support. All my packaging needs are solved here.',
       rating: 5
     }
   ];
@@ -84,7 +84,7 @@ const HomePage = () => {
     <div>
       {/* Hero Banner */}
       <section className="relative bg-gradient-to-br from-green-50 to-green-100 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/data/hero_banner.jpg')] bg-cover bg-center opacity-50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -96,10 +96,10 @@ const HomePage = () => {
               Quality materials, competitive prices, and reliable delivery.
             </p>
             <Link
-              to="/category/eco-friendly"
+              to="/contact"
               className="inline-flex items-center bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Shop Now
+              Order Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>

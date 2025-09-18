@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Product, categories } from '../data/products';
-import { Plus, Edit, Trash2, Save, Loader } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, Loader, X } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import { uploadImageToCloudinary } from '../utils/cloudinary';
@@ -11,8 +11,10 @@ interface ProductForm {
   size: string;
   category: string;
   description: string;
-  image: File | null;
+  selectedFiles: File[];
   imageUrl: string;
+  mainImageUrl: string;
+  otherImageUrls: string[];
 }
 
 const AdminPage = () => {
@@ -29,8 +31,10 @@ const AdminPage = () => {
     size: '',
     category: 'pizza-boxes',
     description: '',
-    image: null,
-    imageUrl: ''
+    selectedFiles: [],
+    imageUrl: '',
+    mainImageUrl: '',
+    otherImageUrls: []
   });
 
   // Fetch products from Firestore
@@ -63,8 +67,10 @@ const AdminPage = () => {
       size: '',
       category: 'pizza-boxes',
       description: '',
-      image: null,
-      imageUrl: ''
+      selectedFiles: [],
+      imageUrl: '',
+      mainImageUrl: '',
+      otherImageUrls: []
     });
     setError('');
     setSuccess('');
@@ -79,10 +85,43 @@ const AdminPage = () => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setFormData(prev => ({ ...prev, image: file }));
+    const files = e.target.files;
+    if (files) {
+      const fileArray = Array.from(files);
+      const maxImages = 5;
+      
+      if (fileArray.length > maxImages) {
+        setError(`Maximum ${maxImages} images allowed. Only the first ${maxImages} images will be selected.`);
+        const limitedFiles = fileArray.slice(0, maxImages);
+        setFormData(prev => ({ ...prev, selectedFiles: [...prev.selectedFiles, ...limitedFiles] }));
+      } else {
+        setFormData(prev => ({ ...prev, selectedFiles: [...prev.selectedFiles, ...fileArray] }));
+      }
+      
+      // Clear the input value to allow re-selecting the same files
+      e.target.value = '';
     }
+  };
+
+  const removeSelectedImage = (indexToRemove: number) => {
+    setFormData(prev => ({
+      ...prev,
+      selectedFiles: prev.selectedFiles.filter((_, index) => index !== indexToRemove)
+    }));
+  };
+
+  const uploadMultipleImages = async (files: File[]): Promise<{ mainImageUrl: string; otherImageUrls: string[] }> => {
+    if (files.length === 0) {
+      throw new Error('No files to upload');
+    }
+
+    const uploadPromises = files.map(file => uploadImageToCloudinary(file));
+    const uploadedUrls = await Promise.all(uploadPromises);
+
+    return {
+      mainImageUrl: uploadedUrls[0],
+      otherImageUrls: uploadedUrls.slice(1)
+    };
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -93,8 +132,8 @@ const AdminPage = () => {
       return;
     }
 
-    if (!isEditing && !formData.image) {
-      setError('Please select an image');
+    if (!isEditing && formData.selectedFiles.length === 0) {
+      setError('Please select at least one image');
       return;
     }
 
@@ -102,11 +141,14 @@ const AdminPage = () => {
     setError('');
 
     try {
-      let imageUrl = formData.imageUrl;
+      let mainImageUrl = formData.mainImageUrl || formData.imageUrl;
+      let otherImageUrls = formData.otherImageUrls || [];
 
-      // Upload image to Cloudinary if a new image is selected
-      if (formData.image) {
-        imageUrl = await uploadImageToCloudinary(formData.image);
+      // Upload new images if selected
+      if (formData.selectedFiles.length > 0) {
+        const uploadResult = await uploadMultipleImages(formData.selectedFiles);
+        mainImageUrl = uploadResult.mainImageUrl;
+        otherImageUrls = uploadResult.otherImageUrls;
       }
 
       const productData = {
@@ -115,7 +157,9 @@ const AdminPage = () => {
         size: formData.size,
         category: formData.category,
         description: formData.description,
-        imageUrl,
+        imageUrl: mainImageUrl, // For backward compatibility
+        mainImageUrl: mainImageUrl,
+        otherImageUrls: otherImageUrls,
         createdAt: serverTimestamp()
       };
 
@@ -147,8 +191,10 @@ const AdminPage = () => {
       size: product.size,
       category: product.category,
       description: product.description,
-      image: null,
-      imageUrl: product.imageUrl
+      selectedFiles: [],
+      imageUrl: product.imageUrl,
+      mainImageUrl: product.mainImageUrl || product.imageUrl,
+      otherImageUrls: product.otherImageUrls || []
     });
     setIsEditing(product.id!);
     setIsAdding(false);
@@ -276,21 +322,80 @@ const AdminPage = () => {
 
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Product Image *
+                  Product Images * (Max 5 images)
                 </label>
                 <input
                   type="file"
                   accept="image/*"
+                  multiple
                   onChange={handleImageChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required={!isEditing}
+                  required={!isEditing && formData.selectedFiles.length === 0}
                 />
-                {formData.imageUrl && (
-                  <img
-                    src={formData.imageUrl}
-                    alt="Preview"
-                    className="mt-2 h-32 w-32 object-cover rounded-lg"
-                  />
+                
+                {/* Selected Images Preview */}
+                {formData.selectedFiles.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-sm text-gray-600 mb-2">Selected Images:</p>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                      {formData.selectedFiles.map((file, index) => (
+                        <div key={index} className="relative">
+                          <img
+                            src={URL.createObjectURL(file)}
+                            alt={`Preview ${index + 1}`}
+                            className={`h-24 w-24 object-cover rounded-lg ${
+                              index === 0 ? 'border-4 border-green-500' : 'border-2 border-gray-200'
+                            }`}
+                          />
+                          {index === 0 && (
+                            <span className="absolute -top-2 -left-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                              Main
+                            </span>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => removeSelectedImage(index)}
+                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Existing Images (when editing) */}
+                {isEditing && (formData.mainImageUrl || formData.otherImageUrls.length > 0) && (
+                  <div className="mt-4">
+                    <p className="text-sm text-gray-600 mb-2">Current Images:</p>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                      {formData.mainImageUrl && (
+                        <div className="relative">
+                          <img
+                            src={formData.mainImageUrl}
+                            alt="Main image"
+                            className="h-24 w-24 object-cover rounded-lg border-4 border-green-500"
+                          />
+                          <span className="absolute -top-2 -left-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                            Main
+                          </span>
+                        </div>
+                      )}
+                      {formData.otherImageUrls.map((url, index) => (
+                        <div key={index} className="relative">
+                          <img
+                            src={url}
+                            alt={`Additional image ${index + 1}`}
+                            className="h-24 w-24 object-cover rounded-lg border-2 border-gray-200"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Select new images above to replace current images
+                    </p>
+                  </div>
                 )}
               </div>
 

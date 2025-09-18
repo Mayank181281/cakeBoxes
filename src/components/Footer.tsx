@@ -22,8 +22,8 @@ const Footer = () => {
                 <Leaf className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">EcoPackage</h3>
-                <p className="text-sm text-green-400">Sustainable Solutions</p>
+                <h3 className="text-xl font-bold">Eco Pack</h3>
+                <p className="text-sm text-green-400">Eco-Friendly Packaging Solutions</p>
               </div>
             </div>
             <p className="text-gray-400 mb-4">

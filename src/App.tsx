@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
 import AdminPage from './pages/AdminPage';
+import ContactPage from './pages/ContactPage';
+import EnquiryPage from './pages/EnquiryPage';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/category/:categoryId" element={<CategoryPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/enquiry" element={<EnquiryPage />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>

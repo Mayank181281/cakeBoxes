@@ -3,14 +3,23 @@ import { useParams, Link } from 'react-router-dom';
 import { useFirestoreProducts } from '../hooks/useFirestoreProducts';
 import { categories } from '../data/products';
 import { ArrowLeft, Plus, Minus, ShoppingBag } from 'lucide-react';
+import ImageModal from '../components/ImageModal';
 
 const ProductPage = () => {
   const { productId } = useParams();
   const { getProductById } = useFirestoreProducts();
   const [quantity, setQuantity] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   const product = getProductById(productId || '');
   const categoryName = product ? categories.find(cat => cat.id === product.category)?.name : '';
+
+  // Combine all images for the modal
+  const allImages = product ? [
+    product.mainImageUrl || product.imageUrl,
+    ...(product.otherImageUrls || [])
+  ].filter(Boolean) : [];
 
   if (!product) {
     return (
@@ -29,6 +38,11 @@ const ProductPage = () => {
     setQuantity(Math.max(1, quantity + change));
   };
 
+  const openModal = (imageIndex: number) => {
+    setModalImageIndex(imageIndex);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -45,15 +59,36 @@ const ProductPage = () => {
       {/* Product Details */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Product Image */}
+          {/* Product Images */}
           <div className="space-y-4">
-            <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+            {/* Main Image */}
+            <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer">
               <img
-                src={product.imageUrl}
+                src={product.mainImageUrl || product.imageUrl}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                onClick={() => openModal(0)}
               />
             </div>
+            
+            {/* Other Images Thumbnails */}
+            {product.otherImageUrls && product.otherImageUrls.length > 0 && (
+              <div className="grid grid-cols-4 gap-2">
+                {product.otherImageUrls.map((imageUrl, index) => (
+                  <div 
+                    key={index}
+                    className="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
+                    onClick={() => openModal(index + 1)}
+                  >
+                    <img
+                      src={imageUrl}
+                      alt={`${product.name} - Image ${index + 2}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
@@ -96,10 +131,13 @@ const ProductPage = () => {
                 </div>
               </div> */}
 
-              <button className="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2">
+              <Link
+                to="/contact"
+                className="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+              >
                 <ShoppingBag className="h-5 w-5" />
-                <span>WhatsApp Now</span>
-              </button>
+                <span>Order Now</span>
+              </Link>
             </div>
 
             {/* Product Details */}
@@ -116,13 +154,21 @@ const ProductPage = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Price:</span>
-                  <span className="font-medium">${product.price}</span>
+                  <span className="font-medium">₹{product.price}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        images={allImages}
+        initialIndex={modalImageIndex}
+      />
     </div>
   );
 };

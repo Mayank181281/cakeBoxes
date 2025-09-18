@@ -17,15 +17,15 @@ const Header = () => {
               <Leaf className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">EcoPackage</h1>
-              <p className="text-xs text-green-600">Sustainable Packaging Solutions</p>
+              <h1 className="text-xl font-bold text-gray-900">Eco Pack</h1>
+              <p className="text-xs text-green-600">Eco-Friendly Packaging Solutions</p>
             </div>
           </Link>
 
           
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-20">
             <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
               Home
             </Link>
@@ -47,19 +47,16 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            {/* <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
-              About Us
-            </Link>
-            <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
+            <Link to="/contact" className="text-gray-700 hover:text-green-600 transition-colors">
               Contact Us
             </Link>
-            <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
-              Distributor
-            </Link> */}
+            <Link to="/enquiry" className="text-gray-700 hover:text-green-600 transition-colors">
+              Enquiry
+            </Link>
           </nav>
 
           {/* Search Bar - Hidden on mobile */}
-          <div className="hidden md:flex flex-1 max-w-md mx-8">
+          {/* <div className="hidden md:flex flex-1 max-w-md mx-8">
             <div className="relative w-full">
               <input
                 type="text"
@@ -68,20 +65,21 @@ const Header = () => {
               />
               <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
             </div>
-          </div>
+          </div> */}
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            {/* <button className="hidden md:block p-2 text-gray-600 hover:text-green-600 transition-colors">
-              <Search className="h-5 w-5" />
-            </button>
-            <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
-              <ShoppingBag className="h-5 w-5" />
-            </button>
-            <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
-              <User className="h-5 w-5" />
-            </button>
-             */}
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-green-700 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 13.487a8.25 8.25 0 1 0-3.375 3.375l2.813.938a.75.75 0 0 0 .938-.938l-.938-2.813z" />
+              </svg>
+              <span>WhatsApp Now</span>
+            </a>
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -107,7 +105,7 @@ const Header = () => {
                 Home
               </Link>
               <div>
-                <p className="text-gray-700 font-medium mb-2">Products</p>
+                <p className="text-gray-700 font-medium mb-2">Categories</p>
                 <div className="pl-4 space-y-2">
                   {categories.map((category) => (
                     <Link
@@ -121,15 +119,23 @@ const Header = () => {
                   ))}
                 </div>
               </div>
-              <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
-                About Us
-              </Link>
-              <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
+              <Link to="/contact" className="text-gray-700 hover:text-green-600 transition-colors">
                 Contact Us
               </Link>
-              <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
-                Distributor
+              <Link to="/enquiry" className="text-gray-700 hover:text-green-600 transition-colors">
+                Enquiry
               </Link>
+              <a
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-green-700 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 13.487a8.25 8.25 0 1 0-3.375 3.375l2.813.938a.75.75 0 0 0 .938-.938l-.938-2.813z" />
+                </svg>
+                <span>WhatsApp Now</span>
+              </a>
             </div>
           </div>
         )}

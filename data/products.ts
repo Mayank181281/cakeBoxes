@@ -5,9 +5,8 @@ export interface Product {
   size: string;
   category: string;
   description: string;
-  imageUrl: string; // Main image (for backward compatibility)
-  mainImageUrl?: string; // Explicit main image
-  otherImageUrls?: string[]; // Additional images
+  mainImageUrl: string;
+  otherImageUrls: string[];
   createdAt?: any; // Firestore Timestamp
 }
 
@@ -25,63 +24,63 @@ export const categories: Category[] = [
     name: 'Sweet Boxes',
     description: 'Premium packaging solutions for sweets, candies, and confectionery items',
     icon: 'Package',
-    image: '/data/p1.jpg'
+    image: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'dry-fruit-boxes',
     name: 'Dry Fruit Boxes',
     description: 'Elegant packaging for dry fruits, nuts, and healthy snacks',
     icon: 'Package',
-    image: '/data/p2.jpg'
+    image: 'https://images.pexels.com/photos/3735780/pexels-photo-3735780.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'cake-boxes',
     name: 'Cake Boxes',
     description: 'Sturdy and attractive boxes designed specifically for cakes of all sizes',
     icon: 'Package',
-    image: '/data/p3.jpg'
+    image: 'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'cake-base',
     name: 'Cake Base',
     description: 'Durable cake bases and boards for professional cake presentation',
     icon: 'Circle',
-    image: '/data/p4.jpg'
+    image: 'https://images.pexels.com/photos/4226924/pexels-photo-4226924.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'pastry-boxes',
     name: 'Pastry Boxes',
     description: 'Compact and elegant boxes perfect for pastries and small baked goods',
     icon: 'Package',
-    image: '/data/p5.jpg'
+    image: 'https://images.pexels.com/photos/5029857/pexels-photo-5029857.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'cupcake-boxes',
     name: 'Cup Cake Boxes',
     description: 'Specialized boxes with inserts for secure cupcake transportation',
     icon: 'Package',
-    image: '/data/p6.jpg'
+    image: 'https://images.pexels.com/photos/4226796/pexels-photo-4226796.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'pizza-boxes',
     name: 'Pizza Boxes',
     description: 'Durable corrugated boxes designed for hot pizza delivery and takeout',
     icon: 'Package',
-    image: '/data/p7.jpg'
+    image: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'brownie-boxes',
     name: 'Brownie Boxes',
     description: 'Perfect sized boxes for brownies and small square baked items',
     icon: 'Package',
-    image: '/data/p8.jpg'
+    image: 'https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
     id: 'snacks-other-boxes',
     name: 'Snacks and Other Boxes',
     description: 'Versatile packaging solutions for various snacks and food items',
     icon: 'Package',
-    image: '/data/p9.jpg'
+    image: 'https://images.pexels.com/photos/3735780/pexels-photo-3735780.jpeg?auto=compress&cs=tinysrgb&w=400'
   }
 ];
 
