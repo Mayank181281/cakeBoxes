@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Product, defaultProducts } from '../data/products';
 
-const STORAGE_KEY = 'ecopackage_products';
+const STORAGE_KEY = 'rk_packagings_products';
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);

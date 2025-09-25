@@ -17,8 +17,8 @@ const Header = () => {
               <Leaf className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Eco Pack</h1>
-              <p className="text-xs text-green-600">Eco-Friendly Packaging Solutions</p>
+              <h1 className="text-xl font-bold text-gray-900">RK Packagings</h1>
+              <p className="text-xs text-green-600">Complete Packaging Solutions</p>
             </div>
           </Link>
 
@@ -28,6 +28,9 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-20">
             <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
               Home
+            </Link>
+            <Link to="/about" className="text-gray-700 hover:text-green-600 transition-colors">
+              About Us
             </Link>
             <div className="relative group">
               <button className="text-gray-700 hover:text-green-600 transition-colors">
@@ -103,6 +106,9 @@ const Header = () => {
               </div>
               <Link to="/" className="text-gray-700 hover:text-green-600 transition-colors">
                 Home
+              </Link>
+              <Link to="/about" className="text-gray-700 hover:text-green-600 transition-colors">
+                About Us
               </Link>
               <div>
                 <p className="text-gray-700 font-medium mb-2">Categories</p>

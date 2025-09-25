@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFirestoreProducts } from '../hooks/useFirestoreProducts';
 import { categories } from '../data/products';
@@ -80,7 +79,7 @@ const CategoryPage = () => {
             <Link
               key={product.id}
               to={`/product/${product.id}`}
-              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
+              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1 flex flex-col h-full"
             >
               <div className="aspect-w-1 aspect-h-1">
                 <img
@@ -89,18 +88,21 @@ const CategoryPage = () => {
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  {product.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-green-600">
+              <div className="p-6 flex flex-col justify-between flex-grow">
+                <div className="flex-grow">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-green-600 transition-colors min-h-[3.5rem] flex items-start">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 min-h-[4rem] flex items-start">
+                    {product.description}
+                  </p>
+                </div>
+                <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100">
+                  <span className="text-2xl font-bold text-green-600 flex items-center">
+                    <span className="text-green-600 mr-1">₹</span>
                     {product.price}
                   </span>
-                  <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
+                  <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium whitespace-nowrap">
                     View Details
                   </button>
                 </div>

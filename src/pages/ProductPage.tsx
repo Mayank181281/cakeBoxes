@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFirestoreProducts } from '../hooks/useFirestoreProducts';
 import { categories } from '../data/products';
-import { ArrowLeft, Plus, Minus, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import ImageModal from '../components/ImageModal';
 
 const ProductPage = () => {
@@ -97,7 +97,7 @@ const ProductPage = () => {
               <p className="text-sm text-green-600 font-medium mb-2">{categoryName}</p>
               <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
               <div className="flex items-center space-x-4 mb-6">
-                <span className="text-3xl font-bold text-green-600">${product.price}</span>
+                <span className="text-3xl font-bold text-green-600">₹{product.price}</span>
                 <span className="text-lg text-gray-600">Size: {product.size}</span>
               </div>
             </div>

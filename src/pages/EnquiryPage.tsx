@@ -139,11 +139,8 @@ const EnquiryPage = () => {
                   <Phone className="h-6 w-6 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Phone Numbers</h3>
-                  <p className="text-gray-600">Vinod Kumar Guliar</p>
-                  <p className="text-green-600 font-medium">9810531633, 9213736631</p>
-                  <p className="text-gray-600 mt-2">CA Rahul Kumar Guliar</p>
-                  <p className="text-green-600 font-medium">7838819672</p>
+                  <h3 className="font-semibold text-gray-900 mb-1">Phone Number</h3>
+                  <a href="tel:+917042006430" className="text-green-600 font-medium hover:text-green-700 transition-colors">7042006430</a>
                 </div>
               </div>
 
@@ -153,7 +150,7 @@ const EnquiryPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-green-600 font-medium">rkpackagings1@gmail.com</p>
+                  <a href="mailto:rkpackagings1@gmail.com" className="text-green-600 font-medium hover:text-green-700 transition-colors">rkpackagings1@gmail.com</a>
                 </div>
               </div>
 

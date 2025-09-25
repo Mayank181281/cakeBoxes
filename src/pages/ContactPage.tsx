@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Package, User, Hash } from 'lucide-react';
+import { Phone, Mail, MapPin, Package, User, Hash, Plus, Trash2 } from 'lucide-react';
+
+interface OrderItem {
+  itemName: string;
+  quantity: string;
+}
 
 interface FormData {
   name: string;
   phone: string;
-  itemName: string;
-  quantity: string;
+  items: OrderItem[];
 }
 
 interface FormErrors {
   name?: string;
   phone?: string;
-  itemName?: string;
-  quantity?: string;
+  items?: { itemName?: string; quantity?: string }[];
 }
 
 const ContactPage = () => {
@@ -20,8 +23,7 @@ const ContactPage = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
-    itemName: '',
-    quantity: ''
+    items: [{ itemName: '', quantity: '' }] // Start with one item
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,7 +31,7 @@ const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  // Handle input changes
+  // Handle input changes for name and phone
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -42,6 +44,44 @@ const ContactPage = () => {
       setErrors(prev => ({
         ...prev,
         [name]: ''
+      }));
+    }
+  };
+
+  // Handle item changes
+  const handleItemChange = (index: number, field: 'itemName' | 'quantity', value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      items: prev.items.map((item, i) => 
+        i === index ? { ...item, [field]: value } : item
+      )
+    }));
+
+    // Clear error when user starts typing
+    if (errors.items && errors.items[index] && errors.items[index][field]) {
+      setErrors(prev => ({
+        ...prev,
+        items: prev.items?.map((error, i) => 
+          i === index ? { ...error, [field]: '' } : error
+        )
+      }));
+    }
+  };
+
+  // Add new item
+  const addItem = () => {
+    setFormData(prev => ({
+      ...prev,
+      items: [...prev.items, { itemName: '', quantity: '' }]
+    }));
+  };
+
+  // Remove item
+  const removeItem = (index: number) => {
+    if (formData.items.length > 1) {
+      setFormData(prev => ({
+        ...prev,
+        items: prev.items.filter((_, i) => i !== index)
       }));
     }
   };
@@ -60,14 +100,31 @@ const ContactPage = () => {
       newErrors.phone = 'Please enter a valid 10-digit phone number';
     }
     
-    if (!formData.itemName.trim()) {
-      newErrors.itemName = 'Item name is required';
-    }
-    
-    if (!formData.quantity.trim()) {
-      newErrors.quantity = 'Quantity is required';
-    } else if (isNaN(Number(formData.quantity)) || parseInt(formData.quantity) <= 0) {
-      newErrors.quantity = 'Please enter a valid quantity';
+    // Validate items
+    const itemErrors: { itemName?: string; quantity?: string }[] = [];
+    let hasItemErrors = false;
+
+    formData.items.forEach((item) => {
+      const itemError: { itemName?: string; quantity?: string } = {};
+      
+      if (!item.itemName.trim()) {
+        itemError.itemName = 'Item name is required';
+        hasItemErrors = true;
+      }
+      
+      if (!item.quantity.trim()) {
+        itemError.quantity = 'Quantity is required';
+        hasItemErrors = true;
+      } else if (isNaN(Number(item.quantity)) || parseInt(item.quantity) <= 0) {
+        itemError.quantity = 'Please enter a valid quantity';
+        hasItemErrors = true;
+      }
+      
+      itemErrors.push(itemError);
+    });
+
+    if (hasItemErrors) {
+      newErrors.items = itemErrors;
     }
     
     setErrors(newErrors);
@@ -90,12 +147,17 @@ const ContactPage = () => {
       const formId = '1FAIpQLSfN_SEVZAQsjEF-Cy7gPxkAKdHJ7QHcOUfjw9C5ZPbf9GV3hg';
       const submitUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
       
+      // Prepare items data
+      const itemsText = formData.items
+        .map((item, index) => `${index + 1}. ${item.itemName} - Quantity: ${item.quantity}`)
+        .join('\n');
+      
       // Entry keys for the Google Form fields
       const googleFormData = new FormData();
       googleFormData.append('entry.2005620554', formData.name);
       googleFormData.append('entry.1166974658', formData.phone);
-      googleFormData.append('entry.839337160', formData.itemName);
-      googleFormData.append('entry.764339826', formData.quantity);
+      googleFormData.append('entry.839337160', itemsText); // Send all items as formatted text
+      googleFormData.append('entry.764339826', formData.items.reduce((total, item) => total + parseInt(item.quantity), 0).toString()); // Total quantity
       
       // Submit to Google Forms
       await fetch(submitUrl, {
@@ -112,8 +174,7 @@ const ContactPage = () => {
       setFormData({
         name: '',
         phone: '',
-        itemName: '',
-        quantity: ''
+        items: [{ itemName: '', quantity: '' }]
       });
       
     } catch (error) {
@@ -148,11 +209,8 @@ const ContactPage = () => {
                   <Phone className="h-6 w-6 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Phone Numbers</h3>
-                  <p className="text-gray-600">Vinod Kumar Guliar</p>
-                  <p className="text-green-600 font-medium">9810531633, 9213736631</p>
-                  <p className="text-gray-600 mt-2">CA Rahul Kumar Guliar</p>
-                  <p className="text-green-600 font-medium">7838819672</p>
+                  <h3 className="font-semibold text-gray-900 mb-1">Phone Number</h3>
+                  <a href="tel:+917042006430" className="text-green-600 font-medium hover:text-green-700 transition-colors">7042006430</a>
                 </div>
               </div>
 
@@ -162,7 +220,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-green-600 font-medium">rkpackagings1@gmail.com</p>
+                  <a href="mailto:rkpackagings1@gmail.com" className="text-green-600 font-medium hover:text-green-700 transition-colors">rkpackagings1@gmail.com</a>
                 </div>
               </div>
 
@@ -287,57 +345,91 @@ const ContactPage = () => {
                 )}
               </div>
 
-              {/* Item Name Field */}
+              {/* Items Section */}
               <div>
-                <label htmlFor="itemName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Item Name *
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Package className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="text"
-                    id="itemName"
-                    name="itemName"
-                    value={formData.itemName}
-                    onChange={handleInputChange}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors ${
-                      errors.itemName ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="e.g., Cake Boxes, Sweet Boxes, etc."
-                  />
+                <div className="flex items-center justify-between mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Items & Quantities *
+                  </label>
+                  <button
+                    type="button"
+                    onClick={addItem}
+                    className="inline-flex items-center px-3 py-2 border border-green-300 text-sm leading-4 font-medium rounded-md text-green-700 bg-green-50 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+                  >
+                    <Plus className="h-4 w-4 mr-1" />
+                    Add Item
+                  </button>
                 </div>
-                {errors.itemName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.itemName}</p>
-                )}
-              </div>
 
-              {/* Quantity Field */}
-              <div>
-                <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-2">
-                  Quantity *
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Hash className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    type="number"
-                    id="quantity"
-                    name="quantity"
-                    min="1"
-                    value={formData.quantity}
-                    onChange={handleInputChange}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors ${
-                      errors.quantity ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="Enter quantity needed"
-                  />
+                <div className="space-y-4">
+                  {formData.items.map((item, index) => (
+                    <div key={index} className="bg-gray-50 p-4 rounded-lg border">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="text-sm font-medium text-gray-700">Item {index + 1}</h4>
+                        {formData.items.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => removeItem(index)}
+                            className="text-red-500 hover:text-red-700 p-1"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        )}
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Item Name */}
+                        <div>
+                          <label className="block text-sm text-gray-600 mb-1">
+                            Item Name *
+                          </label>
+                          <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <Package className="h-4 w-4 text-gray-400" />
+                            </div>
+                            <input
+                              type="text"
+                              value={item.itemName}
+                              onChange={(e) => handleItemChange(index, 'itemName', e.target.value)}
+                              className={`w-full pl-9 pr-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-sm ${
+                                errors.items?.[index]?.itemName ? 'border-red-500' : 'border-gray-300'
+                              }`}
+                              placeholder="e.g., Cake Boxes, Sweet Boxes"
+                            />
+                          </div>
+                          {errors.items?.[index]?.itemName && (
+                            <p className="mt-1 text-xs text-red-600">{errors.items[index].itemName}</p>
+                          )}
+                        </div>
+
+                        {/* Quantity */}
+                        <div>
+                          <label className="block text-sm text-gray-600 mb-1">
+                            Quantity *
+                          </label>
+                          <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <Hash className="h-4 w-4 text-gray-400" />
+                            </div>
+                            <input
+                              type="number"
+                              min="1"
+                              value={item.quantity}
+                              onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
+                              className={`w-full pl-9 pr-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-sm ${
+                                errors.items?.[index]?.quantity ? 'border-red-500' : 'border-gray-300'
+                              }`}
+                              placeholder="Enter quantity"
+                            />
+                          </div>
+                          {errors.items?.[index]?.quantity && (
+                            <p className="mt-1 text-xs text-red-600">{errors.items[index].quantity}</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                {errors.quantity && (
-                  <p className="mt-1 text-sm text-red-600">{errors.quantity}</p>
-                )}
               </div>
 
               {/* Submit Button */}
@@ -372,8 +464,7 @@ const ContactPage = () => {
                     setFormData({
                       name: '',
                       phone: '',
-                      itemName: '',
-                      quantity: ''
+                      items: [{ itemName: '', quantity: '' }]
                     });
                   }}
                   className="w-full bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors font-medium"

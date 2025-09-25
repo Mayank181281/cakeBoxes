@@ -97,7 +97,7 @@ export const defaultProducts: Product[] = [
     ],
     description: 'Premium large clamshell boxes perfect for takeout meals, salads, and larger food portions. Made from sustainable materials with excellent insulation properties.',
     features: [
-      'Eco-friendly kraft paper construction',
+      'Complete kraft paper construction',
       'Grease and moisture resistant',
       'Microwave safe up to 2 minutes',
       'Dimensions: 9" x 9" x 3"',

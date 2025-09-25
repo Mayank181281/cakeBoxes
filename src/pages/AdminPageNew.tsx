@@ -363,7 +363,7 @@ const AdminPage = () => {
                     <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
                     <p className="text-gray-600 mb-2">{product.description}</p>
                     <p className="text-sm text-gray-500 mb-2">
-                      {categories.find(cat => cat.id === product.category)?.name} • ${product.price} • {product.size}
+                      {categories.find(cat => cat.id === product.category)?.name} • ₹{product.price} • {product.size}
                     </p>
                     <div className="flex justify-end space-x-2">
                       <button

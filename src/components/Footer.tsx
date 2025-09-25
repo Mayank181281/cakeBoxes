@@ -22,13 +22,12 @@ const Footer = () => {
                 <Leaf className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Eco Pack</h3>
-                <p className="text-sm text-green-400">Eco-Friendly Packaging Solutions</p>
+                <h3 className="text-xl font-bold">RK Packagings</h3>
+                <p className="text-sm text-green-400">Complete Packaging Solutions</p>
               </div>
             </div>
             <p className="text-gray-400 mb-4">
-              Leading provider of eco-friendly packaging solutions for bakeries,
-              restaurants, and food businesses.
+              Leading provider of innovative packaging solutions tailored for bakeries, sweet shops, and restaurants.
             </p>
             <div className="flex space-x-4">
               <a
@@ -44,7 +43,9 @@ const Footer = () => {
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/rkpackagings/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Instagram className="h-5 w-5" />
@@ -66,31 +67,15 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/category/paper-products"
+                  to="/category/customized-boxes"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Paper Products
+                  Customized Products
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/category/eco-friendly"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Eco-Friendly
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/category/bakery-supplies"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Bakery Supplies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
+                  to="/about"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   About Us
@@ -105,7 +90,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/"
+                  to="/privacy-policy"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Privacy Policy
@@ -113,34 +98,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/terms-of-use"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Return Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Shipping Info
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Distributor Program
+                  Terms of Use
                 </Link>
               </li>
             </ul>
@@ -150,24 +111,53 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-green-400" />
-                <span className="text-gray-400">
-                  Vinod Kumar Guliar <br />
-                  9810531633, 9213736631
-                </span>
+              {/* Get in Touch - Email Card */}
+              <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer">
+                <a 
+                  href="mailto:rkpackagings1@gmail.com"
+                  className="flex items-center justify-between text-white hover:text-green-400 transition-colors"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-gray-700 p-2 rounded-full">
+                      <Mail className="h-5 w-5 text-green-400" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-white">Get in Touch</h5>
+                      <p className="text-gray-300 text-sm">rkpackagings1@gmail.com</p>
+                    </div>
+                  </div>
+                  <div className="text-gray-400">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-green-400" />
-                <span className="text-gray-400">
-                  CA Rahul Kumar Guliar 7838819672
-                </span>
+
+              {/* Call us - Phone Card */}
+              <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer">
+                <a 
+                  href="tel:+917042006430"
+                  className="flex items-center justify-between text-white hover:text-green-400 transition-colors"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-gray-700 p-2 rounded-full">
+                      <Phone className="h-5 w-5 text-green-400" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-white">Call us</h5>
+                      <p className="text-gray-300 text-sm">+91 7042006430</p>
+                    </div>
+                  </div>
+                  <div className="text-gray-400">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-green-400" />
-                <span className="text-gray-400">rkpackagings1@gmail.com</span>
-              </div>
-              <div className="flex items-start space-x-3">
+
+              <div className="flex items-start space-x-3 mt-4">
                 <MapPin className="h-5 w-5 text-green-400 mt-0.5" />
                 <span className="text-gray-400">
                   Office : H.No. 59 Vijay Park, Gurugram(HR) – 122001
@@ -189,7 +179,7 @@ Gurugram(HR) 122006
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2025 R.K. Packaging Solutions. All rights reserved.
+              © 2025 RK Packagings. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm mt-2 md:mt-0">
               Made with 💚 by DevTa

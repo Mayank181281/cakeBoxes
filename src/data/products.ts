@@ -29,64 +29,78 @@ export const categories: Category[] = [
     id: 'sweet-boxes',
     name: 'Sweet Boxes',
     description: 'Premium packaging solutions for sweets, candies, and confectionery items',
-    icon: 'Package',
-    image: '/p1.jpg'
+    icon: 'Cookie',
+    image: '/sweet Box.jpeg'
   },
   {
     id: 'dry-fruit-boxes',
     name: 'Dry Fruit Boxes',
     description: 'Elegant packaging for dry fruits, nuts, and healthy snacks',
-    icon: 'Package',
-    image: '/p2.jpg'
+    icon: 'Apple',
+    image: '/Dry fruit Boxes.webp'
   },
   {
     id: 'cake-boxes',
     name: 'Cake Boxes',
     description: 'Sturdy and attractive boxes designed specifically for cakes of all sizes',
-    icon: 'Package',
-    image: '/p3.jpg'
+    icon: 'Cake',
+    image: '/Cake Box.webp'
   },
   {
     id: 'cake-base',
     name: 'Cake Base',
     description: 'Durable cake bases and boards for professional cake presentation',
     icon: 'Circle',
-    image: '/p4.jpg'
+    image: '/Cake BAse.webp'
   },
   {
     id: 'pastry-boxes',
     name: 'Pastry Boxes',
     description: 'Compact and elegant boxes perfect for pastries and small baked goods',
-    icon: 'Package',
-    image: '/p5.jpg'
+    icon: 'Coffee',
+    image: '/Tags.webp'
   },
   {
     id: 'cupcake-boxes',
     name: 'Cup Cake Boxes',
     description: 'Specialized boxes with inserts for secure cupcake transportation',
-    icon: 'Package',
-    image: '/p6.jpg'
+    icon: 'Heart',
+    image: '/Cup cake Boxes.webp'
   },
   {
     id: 'pizza-boxes',
     name: 'Pizza Boxes',
     description: 'Durable corrugated boxes designed for hot pizza delivery and takeout',
-    icon: 'Package',
-    image: '/p7.jpg'
+    icon: 'Pizza',
+    image: '/Pizza Boxe.webp'
   },
   {
     id: 'brownie-boxes',
     name: 'Brownie Boxes',
     description: 'Perfect sized boxes for brownies and small square baked items',
-    icon: 'Package',
-    image: '/p8.jpg'
+    icon: 'ChefHat',
+    image: '/Brownie Boxes.webp'
   },
   {
     id: 'snacks-other-boxes',
     name: 'Snacks and Other Boxes',
     description: 'Versatile packaging solutions for various snacks and food items',
+    icon: 'Gift',
+    image: '/kaju-katli-sweet-box.jpg'
+  },
+  {
+    id: 'miscellaneous-items',
+    name: 'Miscellaneous Items',
+    description: 'Various specialized packaging items and accessories for diverse needs',
     icon: 'Package',
-    image: '/p9.jpg'
+    image: '/kaju-katli-sweet-box.jpg'
+  },
+  {
+    id: 'customized-boxes',
+    name: 'Customized Boxes',
+    description: 'Personalized packaging solutions tailored to your specific requirements',
+    icon: 'ShoppingBag',
+    image: '/kaju-katli-sweet-box.jpg'
   }
 ];
 
@@ -105,7 +119,7 @@ export const defaultProducts: Product[] = [
     ],
     description: 'Premium large clamshell boxes perfect for takeout meals, salads, and larger food portions. Made from sustainable materials with excellent insulation properties.',
     features: [
-      'Eco-friendly kraft paper construction',
+      'Complete kraft paper construction',
       'Grease and moisture resistant',
       'Microwave safe up to 2 minutes',
       'Dimensions: 9" x 9" x 3"',
