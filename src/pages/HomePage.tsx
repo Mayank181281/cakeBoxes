@@ -41,24 +41,27 @@ const HomePage = () => {
       title: "Har packaging ka ek hi solution",
       subtitle: "RK Packagings",
       description: "Trusted Packaging Solutions Serving bakeries and food businesses with care for generations. Our promise to meet your needs fully, deliver on time, and honor the bond we build — because to us, you are family, not just a client.",
-      image: "/hero_banner.jpg",
-      buttonText: "Order Now"
+      image: "/Banner1.png",
+      buttonText: "Order Now",
+      buttonLink: "/contact"
     },
     {
       id: 2,
       title: "Har packaging ka ek hi solution",
       subtitle: "RK Packagings",
       description: "Trusted Packaging Solutions Serving bakeries and food businesses with care for generations. Our promise to meet your needs fully, deliver on time, and honor the bond we build — because to us, you are family, not just a client.",
-      image: "/p1.jpg",
-      buttonText: "Explore Products"
+      image: "/Banner2.png",
+      buttonText: "Explore Products",
+      buttonLink: "#categories"
     },
     {
       id: 3,
       title: "Har packaging ka ek hi solution",
       subtitle: "RK Packagings",
       description: "Trusted Packaging Solutions Serving bakeries and food businesses with care for generations. Our promise to meet your needs fully, deliver on time, and honor the bond we build — because to us, you are family, not just a client.",
-      image: "/p3.jpg",
-      buttonText: "Get Quote"
+      image: "/Banner3.png",
+      buttonText: "Get Quote",
+      buttonLink: "/enquiry"
     }
   ];
 
@@ -84,6 +87,18 @@ const HomePage = () => {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  // Function to handle button clicks with smooth scrolling
+  const handleButtonClick = (buttonLink: string) => {
+    if (buttonLink === "#categories") {
+      // Smooth scroll to categories section
+      const categoriesSection = document.getElementById('categories');
+      if (categoriesSection) {
+        categoriesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    // For other links, they will be handled by the Link component
   };
 
   const getIconComponent = (iconName: string) => {
@@ -131,73 +146,63 @@ const HomePage = () => {
 
   const testimonials = [
     {
-      name: 'Rajesh Kumar',
-      role: 'Owner, Sweet Corner Mithai Shop',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-      quote: 'One stop solution for my business! Best quality boxes for sweets and dry fruits. Very happy with their service.',
+      name: 'Amit',
+      role: 'Cake Innovation',
+      quote: 'The quality of packaging boxes is excellent! Our sweets stay fresh, and customers love the attractive design. Reliable delivery and competitive rates make RK Packagings our go-to supplier.',
       rating: 5
     },
     {
-      name: 'Priya Sharma',
-      role: 'Baker, Sharma Bakery',
-      image: 'https://images.pexels.com/photos/8363787/pexels-photo-8363787.jpeg',
-      quote: 'Perfect packaging items for my cake business. Good quality and reasonable prices. Highly recommended!',
+      name: 'Sachin Singhla',
+      role: 'Lala Chandiram Sweets',
+      quote: 'Timely delivery every time with sturdy boxes that perfectly hold our sweets. The quality and customer care from RK Packagings is unmatched.',
       rating: 5
     },
     {
-      name: 'Amar Deep',
-      role: 'Restaurant Owner, Punjabi Food Corner',
-      image: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg',
-      quote: 'Very reliable for food packaging. Fast delivery and good customer support. All my packaging needs are solved here.',
+      name: 'Vivek Gulati',
+      role: 'Cake Desire',
+      quote: 'Reasonably priced and fantastic quality packaging solutions. Our customers often compliment the neat & elegant packaging from RK Packagings.',
       rating: 5
     },
     {
-      name: 'Sunita Agarwal',
-      role: 'Owner, Agarwal Sweets',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
-      quote: 'Amazing quality packaging boxes! My customers always appreciate the beautiful presentation. RK Packagings never disappoints.',
+      name: 'Ravinder',
+      role: 'Bikaner Sweets',
+      quote: 'We trust RK Packagings with all our sweet box needs. Their product reliability and packaging strength save us a lot of hassles.',
       rating: 5
     },
     {
-      name: 'Vikram Singh',
-      role: 'Chef, Royal Kitchen',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
-      quote: 'Professional service and timely delivery. The pizza boxes are perfect for our restaurant. Excellent customer care!',
+      name: 'Mukesh',
+      role: 'Laljee Sweets',
+      quote: 'Excellent customer service and quality products. RK Packagings helps us impress our customers every festive season with durable and beautiful boxes.',
       rating: 5
     },
     {
-      name: 'Meera Joshi',
-      role: 'Home Baker',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80',
-      quote: 'Started my home bakery with RK Packagings boxes. Such good quality at affordable prices. They helped my business grow!',
-      rating: 4
-    },
-    {
-      name: 'Ramesh Patel',
-      role: 'Owner, Patel Dry Fruits',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-      quote: 'Best packaging solutions in the city! Dry fruit boxes are so sturdy and attractive. My sales increased after using these.',
+      name: 'Aman',
+      role: 'The Cake Base',
+      quote: 'RK Packagings offers a perfect balance of quality and price. The delivery is always on time, helping us maintain our reputation with customers.',
       rating: 5
     },
     {
-      name: 'Kavita Reddy',
-      role: 'Confectioner, Sweet Dreams',
-      image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80',
-      quote: 'Outstanding quality control and beautiful designs. My chocolate boxes look so premium now. Highly satisfied with service!',
+      name: 'Vinod Arora',
+      role: 'Samrat Sweets',
+      quote: 'We\'ve seen a definite rise in positive customer feedback thanks to RK Packagings\' attractive and sturdy boxes.',
       rating: 5
     },
     {
-      name: 'Arjun Malhotra',
-      role: 'Manager, Food Express',
-      image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=200&q=80',
-      quote: 'Bulk orders handled perfectly every time. Great prices for restaurants. Fast delivery and excellent packaging quality.',
-      rating: 4
+      name: 'Adi',
+      role: 'Kaka Bakery',
+      quote: 'Consistent quality and excellent packaging solutions from RK Packagings keep our sweets safe and fresh for delivery.',
+      rating: 5
     },
     {
-      name: 'Deepika Gupta',
-      role: 'Baker, Gupta Cake House',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
-      quote: 'Cake boxes are perfect! Strong, beautiful and affordable. My customers love the presentation. Thank you RK Packagings!',
+      name: 'Vijay Yadav',
+      role: 'Mamta Sweets',
+      quote: 'Customer satisfaction has increased since we switched to RK Packaging. The boxes are both reliable and look classy!',
+      rating: 5
+    },
+    {
+      name: 'Vinod Yadav',
+      role: 'New Mamta Sweets',
+      quote: 'Reasonable rates and superior packaging quality help us provide the best product presentation to our customers. Highly recommended!',
       rating: 5
     }
   ];
@@ -283,13 +288,23 @@ const HomePage = () => {
                       </p>
                     </div>
                     
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
-                    >
-                      {banner.buttonText}
-                      <ArrowRight className="ml-3 h-6 w-6" />
-                    </Link>
+                    {banner.buttonLink === "#categories" ? (
+                      <button
+                        onClick={() => handleButtonClick(banner.buttonLink)}
+                        className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
+                      >
+                        {banner.buttonText}
+                        <ArrowRight className="ml-3 h-6 w-6" />
+                      </button>
+                    ) : (
+                      <Link
+                        to={banner.buttonLink}
+                        className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
+                      >
+                        {banner.buttonText}
+                        <ArrowRight className="ml-3 h-6 w-6" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -336,7 +351,7 @@ const HomePage = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-white">
+      <section id="categories" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -348,7 +363,6 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories
-              .filter(category => category.id !== 'miscellaneous-items' && category.id !== 'customized-boxes')
               .map((category) => {
               const IconComponent = getIconComponent(category.icon);
               return (
@@ -520,15 +534,7 @@ const HomePage = () => {
                             </div>
                             
                             {/* Customer Info - Compact bottom section */}
-                            <div className="flex items-center justify-center space-x-3 pt-4 border-t border-gray-100 mt-auto">
-                              <img
-                                src={testimonial.image}
-                                alt={testimonial.name}
-                                className="w-12 h-12 rounded-full object-cover border-3 border-green-100 shadow-md"
-                                onError={(e) => {
-                                  e.currentTarget.src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80';
-                                }}
-                              />
+                            <div className="flex flex-col items-center justify-center pt-4 border-t border-gray-100 mt-auto">
                               <div className="text-center">
                                 <h4 className="font-bold text-gray-900 text-base">
                                   {testimonial.name}
