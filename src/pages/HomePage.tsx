@@ -290,6 +290,10 @@ const HomePage = () => {
                       </div>
                     </div>
                     
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f68ccade22d9740a08f52ad12a2f633b675836b
                     {/* CTA Button */}
                     <div className="flex justify-center sm:justify-start">
                       {banner.buttonLink === "#categories" ? (
@@ -310,6 +314,28 @@ const HomePage = () => {
                         </Link>
                       )}
                     </div>
+<<<<<<< HEAD
+=======
+=======
+                    {banner.buttonLink === "#categories" ? (
+                      <button
+                        onClick={() => handleButtonClick(banner.buttonLink)}
+                        className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
+                      >
+                        {banner.buttonText}
+                        <ArrowRight className="ml-3 h-6 w-6" />
+                      </button>
+                    ) : (
+                      <Link
+                        to={banner.buttonLink}
+                        className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
+                      >
+                        {banner.buttonText}
+                        <ArrowRight className="ml-3 h-6 w-6" />
+                      </Link>
+                    )}
+>>>>>>> 26f8c66e5f969733d26d7aa41a42017bcb721878
+>>>>>>> 3f68ccade22d9740a08f52ad12a2f633b675836b
                   </div>
                 </div>
               </div>
