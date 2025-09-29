@@ -41,27 +41,24 @@ const HomePage = () => {
       title: "Har packaging ka ek hi solution",
       subtitle: "RK Packagings",
       description: "Trusted Packaging Solutions Serving bakeries and food businesses with care for generations. Our promise to meet your needs fully, deliver on time, and honor the bond we build — because to us, you are family, not just a client.",
-      image: "/Banner1.png",
-      buttonText: "Order Now",
-      buttonLink: "/contact"
+      image: "/hero_banner.jpg",
+      buttonText: "Order Now"
     },
     {
       id: 2,
       title: "Har packaging ka ek hi solution",
       subtitle: "RK Packagings",
       description: "Trusted Packaging Solutions Serving bakeries and food businesses with care for generations. Our promise to meet your needs fully, deliver on time, and honor the bond we build — because to us, you are family, not just a client.",
-      image: "/Banner2.png",
-      buttonText: "Explore Products",
-      buttonLink: "#categories"
+      image: "/p1.jpg",
+      buttonText: "Explore Products"
     },
     {
       id: 3,
       title: "Har packaging ka ek hi solution",
       subtitle: "RK Packagings",
       description: "Trusted Packaging Solutions Serving bakeries and food businesses with care for generations. Our promise to meet your needs fully, deliver on time, and honor the bond we build — because to us, you are family, not just a client.",
-      image: "/Banner3.png",
-      buttonText: "Get Quote",
-      buttonLink: "/enquiry"
+      image: "/p3.jpg",
+      buttonText: "Get Quote"
     }
   ];
 
@@ -87,18 +84,6 @@ const HomePage = () => {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
-  };
-
-  // Function to handle button clicks with smooth scrolling
-  const handleButtonClick = (buttonLink: string) => {
-    if (buttonLink === "#categories") {
-      // Smooth scroll to categories section
-      const categoriesSection = document.getElementById('categories');
-      if (categoriesSection) {
-        categoriesSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-    // For other links, they will be handled by the Link component
   };
 
   const getIconComponent = (iconName: string) => {
@@ -146,63 +131,73 @@ const HomePage = () => {
 
   const testimonials = [
     {
-      name: 'Amit',
-      role: 'Cake Innovation',
-      quote: 'The quality of packaging boxes is excellent! Our sweets stay fresh, and customers love the attractive design. Reliable delivery and competitive rates make RK Packagings our go-to supplier.',
+      name: 'Rajesh Kumar',
+      role: 'Owner, Sweet Corner Mithai Shop',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      quote: 'One stop solution for my business! Best quality boxes for sweets and dry fruits. Very happy with their service.',
       rating: 5
     },
     {
-      name: 'Sachin Singhla',
-      role: 'Lala Chandiram Sweets',
-      quote: 'Timely delivery every time with sturdy boxes that perfectly hold our sweets. The quality and customer care from RK Packagings is unmatched.',
+      name: 'Priya Sharma',
+      role: 'Baker, Sharma Bakery',
+      image: 'https://images.pexels.com/photos/8363787/pexels-photo-8363787.jpeg',
+      quote: 'Perfect packaging items for my cake business. Good quality and reasonable prices. Highly recommended!',
       rating: 5
     },
     {
-      name: 'Vivek Gulati',
-      role: 'Cake Desire',
-      quote: 'Reasonably priced and fantastic quality packaging solutions. Our customers often compliment the neat & elegant packaging from RK Packagings.',
+      name: 'Amar Deep',
+      role: 'Restaurant Owner, Punjabi Food Corner',
+      image: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg',
+      quote: 'Very reliable for food packaging. Fast delivery and good customer support. All my packaging needs are solved here.',
       rating: 5
     },
     {
-      name: 'Ravinder',
-      role: 'Bikaner Sweets',
-      quote: 'We trust RK Packagings with all our sweet box needs. Their product reliability and packaging strength save us a lot of hassles.',
+      name: 'Sunita Agarwal',
+      role: 'Owner, Agarwal Sweets',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      quote: 'Amazing quality packaging boxes! My customers always appreciate the beautiful presentation. RK Packagings never disappoints.',
       rating: 5
     },
     {
-      name: 'Mukesh',
-      role: 'Laljee Sweets',
-      quote: 'Excellent customer service and quality products. RK Packagings helps us impress our customers every festive season with durable and beautiful boxes.',
+      name: 'Vikram Singh',
+      role: 'Chef, Royal Kitchen',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+      quote: 'Professional service and timely delivery. The pizza boxes are perfect for our restaurant. Excellent customer care!',
       rating: 5
     },
     {
-      name: 'Aman',
-      role: 'The Cake Base',
-      quote: 'RK Packagings offers a perfect balance of quality and price. The delivery is always on time, helping us maintain our reputation with customers.',
+      name: 'Meera Joshi',
+      role: 'Home Baker',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80',
+      quote: 'Started my home bakery with RK Packagings boxes. Such good quality at affordable prices. They helped my business grow!',
+      rating: 4
+    },
+    {
+      name: 'Ramesh Patel',
+      role: 'Owner, Patel Dry Fruits',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      quote: 'Best packaging solutions in the city! Dry fruit boxes are so sturdy and attractive. My sales increased after using these.',
       rating: 5
     },
     {
-      name: 'Vinod Arora',
-      role: 'Samrat Sweets',
-      quote: 'We\'ve seen a definite rise in positive customer feedback thanks to RK Packagings\' attractive and sturdy boxes.',
+      name: 'Kavita Reddy',
+      role: 'Confectioner, Sweet Dreams',
+      image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80',
+      quote: 'Outstanding quality control and beautiful designs. My chocolate boxes look so premium now. Highly satisfied with service!',
       rating: 5
     },
     {
-      name: 'Adi',
-      role: 'Kaka Bakery',
-      quote: 'Consistent quality and excellent packaging solutions from RK Packagings keep our sweets safe and fresh for delivery.',
-      rating: 5
+      name: 'Arjun Malhotra',
+      role: 'Manager, Food Express',
+      image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=200&q=80',
+      quote: 'Bulk orders handled perfectly every time. Great prices for restaurants. Fast delivery and excellent packaging quality.',
+      rating: 4
     },
     {
-      name: 'Vijay Yadav',
-      role: 'Mamta Sweets',
-      quote: 'Customer satisfaction has increased since we switched to RK Packaging. The boxes are both reliable and look classy!',
-      rating: 5
-    },
-    {
-      name: 'Vinod Yadav',
-      role: 'New Mamta Sweets',
-      quote: 'Reasonable rates and superior packaging quality help us provide the best product presentation to our customers. Highly recommended!',
+      name: 'Deepika Gupta',
+      role: 'Baker, Gupta Cake House',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+      quote: 'Cake boxes are perfect! Strong, beautiful and affordable. My customers love the presentation. Thank you RK Packagings!',
       rating: 5
     }
   ];
@@ -239,7 +234,7 @@ const HomePage = () => {
   return (
     <div>
       {/* Hero Carousel Banner */}
-      <section className="relative min-h-screen h-screen overflow-hidden">
+      <section className="relative h-screen overflow-hidden">
         {/* Carousel Container */}
         <div className="relative h-full">
           {banners.map((banner, index) => (
@@ -255,87 +250,46 @@ const HomePage = () => {
                 <img
                   src={banner.image}
                   alt={banner.title}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/40 sm:from-black/60 sm:to-black/30"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30"></div>
               </div>
               
               {/* Content */}
-              <div className="relative h-full flex items-center justify-center sm:justify-start carousel-content">
+              <div className="relative h-full flex items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                  <div className="max-w-5xl text-center sm:text-left">
+                  <div className="max-w-4xl">
                     {/* Main Tagline in Stylish Font */}
-                    <div className="mb-4 sm:mb-6 lg:mb-8">
-                      <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-white mb-2 sm:mb-3 leading-tight tracking-wide">
-                        <span className="font-serif italic text-white drop-shadow-2xl block">
+                    <div className="mb-8">
+                      <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-3 leading-tight tracking-wide">
+                        <span className="font-serif italic text-white drop-shadow-2xl">
                           {banner.title}
                         </span>
                       </h1>
-                      <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black drop-shadow-2xl tracking-wider">
-                        <span className="bg-gradient-to-r from-green-500 via-green-400 to-green-300 bg-clip-text text-transparent block transform hover:scale-105 transition-transform duration-300">
+                      <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-green-400 drop-shadow-2xl tracking-wider transform hover:scale-105 transition-transform duration-300">
+                        <span className="bg-gradient-to-r from-green-500 via-green-400 to-green-300 bg-clip-text text-transparent">
                           {banner.subtitle}
                         </span>
                       </h2>
                     </div>
                     
                     {/* Professional Description */}
-                    <div className="bg-black/40 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 lg:mb-8 border-l-4 border-green-400 mx-auto sm:mx-0 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-none">
-                      <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-100 leading-relaxed font-medium">
-                        <span className="text-green-300 font-bold text-sm sm:text-base md:text-lg lg:text-xl block mb-2">
+                    <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 mb-8 border-l-4 border-green-400">
+                      <p className="text-lg md:text-xl text-gray-100 leading-relaxed font-medium max-w-3xl">
+                        <span className="text-green-300 font-bold text-xl block mb-2">
                           Trusted Packaging Solutions
                         </span>
-                        <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
-                          {banner.description.split('Trusted Packaging Solutions ')[1]}
-                        </p>
-                      </div>
+                        {banner.description.split('Trusted Packaging Solutions ')[1]}
+                      </p>
                     </div>
                     
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3f68ccade22d9740a08f52ad12a2f633b675836b
-                    {/* CTA Button */}
-                    <div className="flex justify-center sm:justify-start">
-                      {banner.buttonLink === "#categories" ? (
-                        <button
-                          onClick={() => handleButtonClick(banner.buttonLink)}
-                          className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-xl text-base sm:text-lg lg:text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
-                        >
-                          {banner.buttonText}
-                          <ArrowRight className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
-                        </button>
-                      ) : (
-                        <Link
-                          to={banner.buttonLink}
-                          className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-xl text-base sm:text-lg lg:text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
-                        >
-                          {banner.buttonText}
-                          <ArrowRight className="ml-2 sm:ml-3 h-5 w-5 sm:h-6 sm:w-6" />
-                        </Link>
-                      )}
-                    </div>
-<<<<<<< HEAD
-=======
-=======
-                    {banner.buttonLink === "#categories" ? (
-                      <button
-                        onClick={() => handleButtonClick(banner.buttonLink)}
-                        className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
-                      >
-                        {banner.buttonText}
-                        <ArrowRight className="ml-3 h-6 w-6" />
-                      </button>
-                    ) : (
-                      <Link
-                        to={banner.buttonLink}
-                        className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
-                      >
-                        {banner.buttonText}
-                        <ArrowRight className="ml-3 h-6 w-6" />
-                      </Link>
-                    )}
->>>>>>> 26f8c66e5f969733d26d7aa41a42017bcb721878
->>>>>>> 3f68ccade22d9740a08f52ad12a2f633b675836b
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-5 rounded-xl text-xl font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-2xl hover:shadow-green-600/50 transform hover:-translate-y-2 hover:scale-105 border-2 border-green-400"
+                    >
+                      {banner.buttonText}
+                      <ArrowRight className="ml-3 h-6 w-6" />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -346,25 +300,25 @@ const HomePage = () => {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 group z-10"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group"
         >
-          <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:scale-110 transition-transform" />
+          <ChevronLeft className="h-8 w-8 text-white group-hover:scale-110 transition-transform" />
         </button>
         
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 group z-10"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group"
         >
-          <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:scale-110 transition-transform" />
+          <ChevronRight className="h-8 w-8 text-white group-hover:scale-110 transition-transform" />
         </button>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
           {banners.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 index === currentSlide
                   ? 'bg-green-400 scale-125'
                   : 'bg-white/50 hover:bg-white/75'
@@ -374,15 +328,15 @@ const HomePage = () => {
         </div>
 
         {/* Slide Counter */}
-        <div className="absolute top-4 sm:top-8 right-4 sm:right-8 bg-black/30 backdrop-blur-sm rounded-lg px-3 py-1 sm:px-4 sm:py-2">
-          <span className="text-white font-medium text-sm sm:text-base">
+        <div className="absolute top-8 right-8 bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2">
+          <span className="text-white font-medium">
             {currentSlide + 1} / {banners.length}
           </span>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section id="categories" className="py-16 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -394,6 +348,7 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories
+              .filter(category => category.id !== 'miscellaneous-items' && category.id !== 'customized-boxes')
               .map((category) => {
               const IconComponent = getIconComponent(category.icon);
               return (
@@ -565,7 +520,15 @@ const HomePage = () => {
                             </div>
                             
                             {/* Customer Info - Compact bottom section */}
-                            <div className="flex flex-col items-center justify-center pt-4 border-t border-gray-100 mt-auto">
+                            <div className="flex items-center justify-center space-x-3 pt-4 border-t border-gray-100 mt-auto">
+                              <img
+                                src={testimonial.image}
+                                alt={testimonial.name}
+                                className="w-12 h-12 rounded-full object-cover border-3 border-green-100 shadow-md"
+                                onError={(e) => {
+                                  e.currentTarget.src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80';
+                                }}
+                              />
                               <div className="text-center">
                                 <h4 className="font-bold text-gray-900 text-base">
                                   {testimonial.name}

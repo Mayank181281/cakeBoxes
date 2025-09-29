@@ -11,28 +11,3 @@
   line-clamp: 3;
   text-overflow: ellipsis;
 }
-
-/* Responsive carousel improvements */
-@media (max-width: 640px) {
-  .carousel-content {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-}
-
-@media (min-width: 641px) {
-  .carousel-content {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-}
-
-/* Smooth scrolling for better UX */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Better text rendering */
-.font-display {
-  font-display: swap;
-}

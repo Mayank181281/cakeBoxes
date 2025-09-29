@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import CategoryPage from './pages/CategoryPage';
@@ -15,7 +14,6 @@ import TermsOfUsePage from './pages/TermsOfUsePage';
 function App() {
   return (
     <Router>
-      <ScrollToTop />
       <div className="min-h-screen bg-white flex flex-col">
         <Header />
         <main className="flex-1">

@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useFirestoreProducts } from '../hooks/useFirestoreProducts';
 import { categories } from '../data/products';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Filter, Grid, List } from 'lucide-react';
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
@@ -46,8 +46,34 @@ const CategoryPage = () => {
         </div>
       </div>
 
+      {/* Filters and Controls */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+          <div className="flex items-center space-x-4">
+            <button className="flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              <Filter className="h-4 w-4 mr-2" />
+              Filters
+            </button>
+            <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              <option>Sort by: Popular</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+            </select>
+          </div>
+          <div className="flex items-center space-x-2">
+            <button className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              <Grid className="h-4 w-4" />
+            </button>
+            <button className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              <List className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => (
             <Link

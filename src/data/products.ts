@@ -86,28 +86,21 @@ export const categories: Category[] = [
     name: 'Snacks and Other Boxes',
     description: 'Versatile packaging solutions for various snacks and food items',
     icon: 'Gift',
-    image: '/Snack and Other Boxes.png'
-  },
-  {
-    id: 'gajak-bhaji-boxes',
-    name: 'Gajak Boxes and Bhaji Boxes',
-    description: 'Specialized packaging solutions for gajak, bhaji, and traditional Indian snacks',
-    icon: 'Utensils',
-    image: '/Bhaji Boxes.png'
+    image: '/kaju-katli-sweet-box.jpg'
   },
   {
     id: 'miscellaneous-items',
     name: 'Miscellaneous Items',
     description: 'Various specialized packaging items and accessories for diverse needs',
     icon: 'Package',
-    image: '/Miscellaneous Items.png'
+    image: '/kaju-katli-sweet-box.jpg'
   },
   {
     id: 'customized-boxes',
     name: 'Customized Boxes',
     description: 'Personalized packaging solutions tailored to your specific requirements',
     icon: 'ShoppingBag',
-    image: '/Customized Boxes.png'
+    image: '/kaju-katli-sweet-box.jpg'
   }
 ];
 
