@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Package, User, Hash, Plus, Trash2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Package, User, Hash, Plus, Trash2, Instagram, MessageCircle } from 'lucide-react';
 
 interface OrderItem {
   itemName: string;
@@ -247,6 +247,41 @@ const ContactPage = () => {
                     Plot No. 787, Daultabad Industrial Area<br />
                     Gurugram (HR) 122006
                   </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="bg-green-100 p-3 rounded-lg">
+                  <Instagram className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1">Follow Us</h3>
+                  <a 
+                    href="https://www.instagram.com/rkpackagings/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-green-600 font-medium hover:text-green-700 transition-colors"
+                  >
+                    @rkpackagings
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="bg-green-100 p-3 rounded-lg">
+                  <MessageCircle className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1">WhatsApp Channel</h3>
+                  <a 
+                    href="https://whatsapp.com/channel/0029VbC1jXILikg33bZqGP0e" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-green-600 font-medium hover:text-green-700 transition-colors"
+                  >
+                    Join for Updates
+                  </a>
+                  <p className="text-sm text-gray-500 mt-1">Get regular updates about new products</p>
                 </div>
               </div>
             </div>

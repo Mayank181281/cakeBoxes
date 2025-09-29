@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { categories } from '../data/products';
-import { Search, Menu, X, ShoppingBag, User, Leaf } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -13,8 +12,12 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-green-600 p-2 rounded-lg">
-              <Leaf className="h-6 w-6 text-white" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img 
+                src="/logo.png" 
+                alt="RK Packagings Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">RK Packagings</h1>
@@ -73,7 +76,7 @@ const Header = () => {
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
             <a
-              href="https://wa.me/"
+              href="https://wa.me/917042006430"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-green-700 transition-colors"
@@ -132,7 +135,7 @@ const Header = () => {
                 Enquiry
               </Link>
               <a
-                href="https://wa.me/"
+                href="https://wa.me/917042006430"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-green-700 transition-colors"
