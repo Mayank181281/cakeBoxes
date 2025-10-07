@@ -273,8 +273,8 @@ const HomePage = () => {
                           {banner.title}
                         </span>
                       </h1>
-                      <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black drop-shadow-2xl tracking-wider">
-                        <span className="bg-gradient-to-r from-green-500 via-green-400 to-green-300 bg-clip-text text-transparent block transform hover:scale-105 transition-transform duration-300">
+                      <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black drop-shadow-2xl tracking-wider leading-relaxed pb-4 mb-2">
+                        <span className="bg-gradient-to-r from-green-500 via-green-400 to-green-300 bg-clip-text text-transparent block transform hover:scale-105 transition-transform duration-300 leading-relaxed overflow-visible">
                           {banner.subtitle}
                         </span>
                       </h2>
@@ -322,14 +322,14 @@ const HomePage = () => {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 group z-10"
+          className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 rounded-full p-2 sm:p-3 transition-all duration-300 group z-10 hover:scale-110"
         >
           <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:scale-110 transition-transform" />
         </button>
         
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 group z-10"
+          className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 rounded-full p-2 sm:p-3 transition-all duration-300 group z-10 hover:scale-110"
         >
           <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover:scale-110 transition-transform" />
         </button>
