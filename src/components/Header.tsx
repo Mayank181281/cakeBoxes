@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { categories } from '../data/products';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
+  const location = useLocation();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -75,6 +78,16 @@ const Header = () => {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
+            {/* Admin logout button - only show when authenticated and on admin page */}
+            {isAuthenticated && location.pathname === '/admin' && (
+              <button
+                onClick={logout}
+                className="bg-red-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-red-700 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Logout</span>
+              </button>
+            )}
             <a
               href="https://wa.me/917042006430"
               target="_blank"

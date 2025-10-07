@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Product, categories } from '../data/products';
-import { Plus, Edit, Trash2, Save, Loader, X } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, Loader } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import { uploadImageToCloudinary } from '../utils/cloudinary';
 
 interface ProductForm {
   name: string;
-  price: number;
+  price: string;
   size: string;
   category: string;
   description: string;
@@ -27,7 +27,7 @@ const AdminPage = () => {
   const [success, setSuccess] = useState<string>('');
   const [formData, setFormData] = useState<ProductForm>({
     name: '',
-    price: 0,
+    price: '',
     size: '',
     category: 'pizza-boxes',
     description: '',
@@ -63,7 +63,7 @@ const AdminPage = () => {
   const resetForm = () => {
     setFormData({
       name: '',
-      price: 0,
+      price: '',
       size: '',
       category: 'pizza-boxes',
       description: '',
@@ -77,10 +77,10 @@ const AdminPage = () => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'number' ? parseFloat(value) || 0 : value
+      [name]: value
     }));
   };
 
@@ -127,7 +127,7 @@ const AdminPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.description || formData.price <= 0 || !formData.size) {
+    if (!formData.name || !formData.description || !formData.price.trim() || !formData.size) {
       setError('Please fill in all required fields');
       return;
     }
@@ -278,12 +278,11 @@ const AdminPage = () => {
                   Price *
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
-                  min="0"
-                  step="0.01"
+                  placeholder="e.g. ₹100 or $10 or Custom pricing"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
                 />
