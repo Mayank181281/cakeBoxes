@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Product, categories } from '../data/products';
-import { Plus, Edit, Trash2, Save, Loader, X } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, Loader, LogOut } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import { uploadImageToCloudinary } from '../utils/cloudinary';
+import { ADMIN_AUTH_KEY } from '../config/adminConfig';
 
 interface ProductForm {
   name: string;
-  price: number;
+  price: string;
   size: string;
   category: string;
   description: string;
@@ -18,6 +20,7 @@ interface ProductForm {
 }
 
 const AdminPage = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,7 +30,7 @@ const AdminPage = () => {
   const [success, setSuccess] = useState<string>('');
   const [formData, setFormData] = useState<ProductForm>({
     name: '',
-    price: 0,
+    price: '',
     size: '',
     category: 'pizza-boxes',
     description: '',
@@ -63,7 +66,7 @@ const AdminPage = () => {
   const resetForm = () => {
     setFormData({
       name: '',
-      price: 0,
+      price: '',
       size: '',
       category: 'pizza-boxes',
       description: '',
@@ -76,11 +79,16 @@ const AdminPage = () => {
     setSuccess('');
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem(ADMIN_AUTH_KEY);
+    navigate('/admin-login');
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'number' ? parseFloat(value) || 0 : value
+      [name]: value
     }));
   };
 
@@ -127,7 +135,7 @@ const AdminPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.description || formData.price <= 0 || !formData.size) {
+    if (!formData.name || !formData.description || !formData.price.trim() || !formData.size) {
       setError('Please fill in all required fields');
       return;
     }
@@ -231,13 +239,22 @@ const AdminPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Product Management</h1>
-          <button
-            onClick={handleAdd}
-            className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
-          >
-            <Plus className="h-5 w-5" />
-            <span>Add Product</span>
-          </button>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={handleAdd}
+              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+            >
+              <Plus className="h-5 w-5" />
+              <span>Add Product</span>
+            </button>
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2"
+            >
+              <LogOut className="h-5 w-5" />
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
 
         {/* Success/Error Messages */}
@@ -278,12 +295,11 @@ const AdminPage = () => {
                   Price *
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
-                  min="0"
-                  step="0.01"
+                  placeholder="e.g. ₹100 or $10 or Custom pricing"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
                 />
