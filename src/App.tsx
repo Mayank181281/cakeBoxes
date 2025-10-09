@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import AdminProtectedRoute from './components/AdminProtectedRoute';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
 import AdminPage from './pages/AdminPage';
+import AdminLogin from './pages/AdminLogin';
 import ContactPage from './pages/ContactPage';
 import EnquiryPage from './pages/EnquiryPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -28,7 +30,15 @@ function App() {
             <Route path="/enquiry" element={<EnquiryPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-use" element={<TermsOfUsePage />} />
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route 
+              path="/admin" 
+              element={
+                <AdminProtectedRoute>
+                  <AdminPage />
+                </AdminProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
